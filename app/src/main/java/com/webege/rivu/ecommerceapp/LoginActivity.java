@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +43,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.Manifest.permission.ACCESS_NETWORK_STATE;
+import static android.Manifest.permission.ACCESS_WIFI_STATE;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -116,20 +119,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(ACCESS_WIFI_STATE) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
+        if (shouldShowRequestPermissionRationale(READ_CONTACTS)||shouldShowRequestPermissionRationale(ACCESS_NETWORK_STATE)||shouldShowRequestPermissionRationale(ACCESS_WIFI_STATE)) {
             Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+                            requestPermissions(new String[]{READ_CONTACTS, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE}, REQUEST_READ_CONTACTS);
                         }
                     });
         } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+            requestPermissions(new String[]{READ_CONTACTS, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE}, REQUEST_READ_CONTACTS);
         }
         return false;
     }
@@ -205,7 +208,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return true;
     }
 
     private boolean isPasswordValid(String password) {
@@ -316,11 +319,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         // Display the first 500 characters of the response string.
                         Snackbar.make(mEmailView, response, Snackbar.LENGTH_INDEFINITE);
                         showProgress(false);
+                        Log.d("Response",response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.e("Error",error.toString(),error);
             }
         }) {
 
