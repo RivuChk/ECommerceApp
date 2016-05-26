@@ -321,7 +321,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void performLogin(final String email, final String password){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://www.moonrecharge.com/loginMobileApps";
+        String url ="http://www.moonrecharge.com/loginMobileApps?userid="+email+"&password="+password;
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -353,7 +353,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         }
 
                         NodeList nodeList = doc.getElementsByTagName("LOGININFO");
-                        String status = nodeList.toString();
+                        String status = nodeList.item(0).getTextContent();
 
                         Toast.makeText(LoginActivity.this,status,Toast.LENGTH_LONG).show();
 
@@ -363,15 +363,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onErrorResponse(VolleyError error) {
                 Log.e("Error",error.toString(),error);
             }
-        }) {
-
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("userid", email);
-                params.put("password", password);
-                return params;
-            };
-        };
+        });
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
