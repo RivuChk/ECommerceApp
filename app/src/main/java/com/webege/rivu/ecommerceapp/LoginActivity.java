@@ -38,10 +38,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import static android.Manifest.permission.ACCESS_NETWORK_STATE;
 import static android.Manifest.permission.ACCESS_WIFI_STATE;
@@ -317,9 +329,34 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        Snackbar.make(mEmailView, response, Snackbar.LENGTH_INDEFINITE);
+                        Snackbar.make(mEmailView, response, Snackbar.LENGTH_INDEFINITE).show();
                         showProgress(false);
                         Log.d("Response",response);
+
+
+                        Document doc = null;
+                        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                        try {
+
+                            DocumentBuilder db = dbf.newDocumentBuilder();
+
+                            InputSource is = new InputSource();
+                            is.setCharacterStream(new StringReader(response));
+                            doc = db.parse(is);
+
+                        } catch (ParserConfigurationException e) {
+                            Log.e("Error: ", e.getMessage());
+                        } catch (SAXException e) {
+                            Log.e("Error: ", e.getMessage());
+                        } catch (IOException e) {
+                            Log.e("Error: ", e.getMessage());
+                        }
+
+                        NodeList nodeList = doc.getElementsByTagName("LOGININFO");
+                        String status = nodeList.toString();
+
+                        Toast.makeText(LoginActivity.this,status,Toast.LENGTH_LONG).show();
+
                     }
                 }, new Response.ErrorListener() {
             @Override
