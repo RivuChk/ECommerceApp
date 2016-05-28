@@ -3,6 +3,8 @@ package com.webege.rivu.ecommerceapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -37,6 +39,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.webege.rivu.ecommerceapp.utility.Config;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -86,11 +89,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        prefs = getSharedPreferences(Config.PREFS_NAME,MODE_PRIVATE);
+        String userID = prefs.getString(Config.USER_ID,"");
+        if(!userID.equalsIgnoreCase("")){
+            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -329,7 +342,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        Snackbar.make(mEmailView, response, Snackbar.LENGTH_INDEFINITE).show();
                         showProgress(false);
                         Log.d("Response",response);
 
@@ -355,7 +367,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         NodeList nodeList = doc.getElementsByTagName("LOGININFO");
                         String status = nodeList.item(0).getTextContent();
 
-                        Toast.makeText(LoginActivity.this,status,Toast.LENGTH_LONG).show();
+                        if(status.equalsIgnoreCase("SUCCESS")){
+
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString(Config.USER_ID,email);
+                            editor.commit();
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Snackbar.make(mEmailView, R.string.error_invalid_email, Snackbar.LENGTH_INDEFINITE).show();
+                        }
 
                     }
                 }, new Response.ErrorListener() {

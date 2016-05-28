@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_mrecharge"
+            android:title="Mobile Recharge" />
+        <item
+            android:id="@+id/nav_drecharge"
+            android:title="DTH Recharge" />
+        <item
+            android:id="@+id/nav_dcrecharge"
+            android:title="Data Card Recharge" />
+        <item
+            android:id="@+id/nav_precharge"
+            android:title="Postpaid Recharge" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_lbill"
+            android:title="Landline Bill" />
+        <item
+            android:id="@+id/nav_gbill"
+            android:title="Gas Bill" />
+        <item
+            android:id="@+id/nav_ebill"
+            android:title="Electricity Bill" />
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cball"
+            android:title="Check Balance" />
+        <item
+            android:id="@+id/nav_rech_rept"
+            android:title="Recharge Report" />
+        <item
+            android:id="@+id/nav_u_rept"
+            android:title="Utility Report" />
+        <item
+            android:id="@+id/nav_bal_trans"
+            android:title="Balance Transfer" />
+        <item
+            android:id="@+id/nav_baltrans_rept"
+            android:title="Balance Transfer Report" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_change_pass"
+            android:title="Change Password" />
+        <item
+            android:id="@+id/nav_support"
+            android:title="Support" />
+
+
+    </group>
+
+    <!--<item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>
