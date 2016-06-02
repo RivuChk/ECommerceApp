@@ -7,6 +7,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.TypefaceSpan;
@@ -25,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.webege.rivu.ecommerceapp.navitems.Home;
 import com.webege.rivu.ecommerceapp.navitems.MobileRecharge;
 import com.webege.rivu.ecommerceapp.utility.CustomTypefaceSpan;
 
@@ -88,16 +92,10 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-        GridView gridView = (GridView) findViewById(R.id.gridview);
-        ArrayAdapter arrayAdapter = new ArrayAdapter(MainActivity.this,R.layout.item_options,R.id.optionText,options);
-        gridView.setAdapter(arrayAdapter);
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(),options[position],Toast.LENGTH_LONG).show();
-            }
-        });
+        Home fragment = new Home();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content, fragment);
+        ft.commit();
 
     }
 
@@ -124,12 +122,24 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragment = null;
 
-        if(id == R.id.nav_mrecharge){
+        if(id == R.id.nav_home){
 
-            Intent intent = new Intent(MainActivity.this,MobileRecharge.class);
+            fragment = new Home();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content, fragment);
+            ft.commit();
+
+        }else if(id == R.id.nav_mrecharge){
+
+            /*Intent intent = new Intent(MainActivity.this,MobileRecharge.class);
             startActivity(intent);
-            return  true;
+            return  true;*/
+            fragment = new MobileRecharge();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

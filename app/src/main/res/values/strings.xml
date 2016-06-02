@@ -23,4 +23,9 @@
     <string name="input_number">Enter Number</string>
     <string name="input_enter_amount">Enter Amount</string>
     <string name="input_enter_confirm_amount">Confirm Amount</string>
+
+
+    <string name="mobile_recharge">Mobile Recharge</string>
+    <string name="mobile_recharge_submit_details">Submit Details</string>
+
 </resources>

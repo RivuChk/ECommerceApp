@@ -3,6 +3,9 @@ package com.webege.rivu.ecommerceapp;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -12,11 +15,23 @@ public class MobileRechargeSubmit extends Activity {
     EditText edittext_enter_amount;
     EditText edittext_enter_confirm_amount;
     Button btn_recharge;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_recharge_submit);
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.mobile_recharge_submit_details);
+        toolbar.setTitleTextColor(-1);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Lato-Regular.ttf");
 
