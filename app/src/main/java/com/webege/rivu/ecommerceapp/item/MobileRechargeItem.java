@@ -6,18 +6,18 @@ package com.webege.rivu.ecommerceapp.item;
 public class MobileRechargeItem {
 
     private String providerName;
-    private String providerImage;
+    private String providerCode;
 
-    public MobileRechargeItem(String providerName, String providerImage) {
+    public MobileRechargeItem(String providerName, String providerCode) {
         this.providerName = providerName;
-        this.providerImage = providerImage;
+        this.providerCode = providerCode;
     }
 
     public String getProviderName() {
         return providerName;
     }
 
-    public String getProviderImage() {
-        return providerImage;
+    public String getProviderCode() {
+        return providerCode;
     }
 }

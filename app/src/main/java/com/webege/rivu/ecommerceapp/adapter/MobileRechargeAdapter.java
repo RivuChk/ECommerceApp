@@ -7,11 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.webege.rivu.ecommerceapp.MobileRechargeSubmit;
 import com.webege.rivu.ecommerceapp.R;
 import com.webege.rivu.ecommerceapp.item.MobileRechargeItem;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -19,11 +22,12 @@ import java.util.List;
  */
 public class MobileRechargeAdapter extends BaseAdapter {
 
-    List<MobileRechargeItem> mobileRechargeItems;
+    List<MobileRechargeItem> mobileRechargeItems = new ArrayList<>();
     Context context;
 
-    public MobileRechargeAdapter(List<MobileRechargeItem> mobileRechargeItems, Context context) {
-        this.mobileRechargeItems = mobileRechargeItems;
+    public MobileRechargeAdapter(Collection<MobileRechargeItem> mobileRechargeItems, Context context) {
+        this.mobileRechargeItems.clear();
+        this.mobileRechargeItems.addAll(mobileRechargeItems);
         this.context = context;
     }
 
@@ -50,13 +54,16 @@ public class MobileRechargeAdapter extends BaseAdapter {
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         view = mInflater.inflate(R.layout.item_mobilerechage, null);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MobileRechargeSubmit.class);
-                context.startActivity(intent);
-            }
-        });
+        TextView txt_store_name = (TextView) view.findViewById(R.id.txt_store_name);
+        txt_store_name.setText(mobileRechargeItems.get(position).getProviderName());
+
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(context, MobileRechargeSubmit.class);
+//                context.startActivity(intent);
+//            }
+//        });
 
         return view;
     }
