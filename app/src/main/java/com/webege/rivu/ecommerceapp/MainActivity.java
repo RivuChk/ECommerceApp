@@ -28,8 +28,12 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.webege.rivu.ecommerceapp.navitems.DTHRecharge;
+import com.webege.rivu.ecommerceapp.navitems.DataCardRecharge;
 import com.webege.rivu.ecommerceapp.navitems.Home;
+import com.webege.rivu.ecommerceapp.navitems.LandlineBillRecharge;
 import com.webege.rivu.ecommerceapp.navitems.MobileRecharge;
+import com.webege.rivu.ecommerceapp.navitems.PostPaidRecharge;
 import com.webege.rivu.ecommerceapp.utility.CustomTypefaceSpan;
 
 public class MainActivity extends AppCompatActivity
@@ -133,13 +137,34 @@ public class MainActivity extends AppCompatActivity
 
         }else if(id == R.id.nav_mrecharge){
 
-            /*Intent intent = new Intent(MainActivity.this,MobileRecharge.class);
-            startActivity(intent);
-            return  true;*/
             fragment = new MobileRecharge();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content, fragment);
-            ft.commit();
+            FragmentTransaction ft_mobile = getSupportFragmentManager().beginTransaction();
+            ft_mobile.replace(R.id.content, fragment);
+            ft_mobile.commit();
+        }else if(id == R.id.nav_dthrecharge){
+
+            fragment = new DTHRecharge();
+            FragmentTransaction ft_dth = getSupportFragmentManager().beginTransaction();
+            ft_dth.replace(R.id.content, fragment);
+            ft_dth.commit();
+        }else if(id == R.id.nav_datacard_recharge){
+
+            fragment = new DataCardRecharge();
+            FragmentTransaction ft_datacard = getSupportFragmentManager().beginTransaction();
+            ft_datacard.replace(R.id.content, fragment);
+            ft_datacard.commit();
+        }else if(id == R.id.nav_postpaid_recharge){
+
+            fragment = new PostPaidRecharge();
+            FragmentTransaction ft_postpaid = getSupportFragmentManager().beginTransaction();
+            ft_postpaid.replace(R.id.content, fragment);
+            ft_postpaid.commit();
+        }else if(id == R.id.nav_landline_bill){
+
+            fragment = new LandlineBillRecharge();
+            FragmentTransaction ft_landline_bill = getSupportFragmentManager().beginTransaction();
+            ft_landline_bill.replace(R.id.content, fragment);
+            ft_landline_bill.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

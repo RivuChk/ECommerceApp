@@ -25,7 +25,11 @@
     <string name="input_enter_confirm_amount">Confirm Amount</string>
 
 
-    <string name="mobile_recharge">Mobile Recharge</string>
     <string name="mobile_recharge_submit_details">Submit Details</string>
+    <string name="mobile_recharge">Mobile Recharge</string>
+    <string name="dth_recharge">DTH Recharge</string>
+    <string name="data_card_recharge">Data Card Recharge</string>
+    <string name="post_paid_recharge">Post Paid Recharge</string>
+    <string name="landline_bill_recharge">LandLine Bill</string>
 
 </resources>

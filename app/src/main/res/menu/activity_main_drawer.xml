@@ -9,19 +9,19 @@
             android:id="@+id/nav_mrecharge"
             android:title="Mobile Recharge" />
         <item
-            android:id="@+id/nav_drecharge"
+            android:id="@+id/nav_dthrecharge"
             android:title="DTH Recharge" />
         <item
-            android:id="@+id/nav_dcrecharge"
+            android:id="@+id/nav_datacard_recharge"
             android:title="Data Card Recharge" />
         <item
-            android:id="@+id/nav_precharge"
+            android:id="@+id/nav_postpaid_recharge"
             android:title="Postpaid Recharge" />
     </group>
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_lbill"
-            android:title="Landline Bill" />
+            android:id="@+id/nav_landline_bill"
+            android:title="LandLine Bill" />
         <item
             android:id="@+id/nav_gbill"
             android:title="Gas Bill" />
