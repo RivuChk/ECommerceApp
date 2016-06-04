@@ -57,13 +57,6 @@ public class MobileRechargeAdapter extends BaseAdapter {
         TextView txt_store_name = (TextView) view.findViewById(R.id.txt_store_name);
         txt_store_name.setText(mobileRechargeItems.get(position).getProviderName());
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, MobileRechargeSubmit.class);
-//                context.startActivity(intent);
-//            }
-//        });
 
         return view;
     }
