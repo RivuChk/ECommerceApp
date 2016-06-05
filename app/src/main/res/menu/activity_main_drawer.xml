@@ -23,28 +23,28 @@
             android:id="@+id/nav_landline_bill"
             android:title="LandLine Bill" />
         <item
-            android:id="@+id/nav_gbill"
+            android:id="@+id/nav_gasbill"
             android:title="Gas Bill" />
         <item
-            android:id="@+id/nav_ebill"
+            android:id="@+id/nav_electricitybill"
             android:title="Electricity Bill" />
 
     </group>
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_cball"
+            android:id="@+id/nav_check_bal"
             android:title="Check Balance" />
         <item
-            android:id="@+id/nav_rech_rept"
+            android:id="@+id/nav_recharge_report"
             android:title="Recharge Report" />
         <item
-            android:id="@+id/nav_u_rept"
+            android:id="@+id/nav_utility_report"
             android:title="Utility Report" />
         <item
-            android:id="@+id/nav_bal_trans"
+            android:id="@+id/nav_balance_transfer"
             android:title="Balance Transfer" />
         <item
-            android:id="@+id/nav_baltrans_rept"
+            android:id="@+id/nav_bal_transfer_rept"
             android:title="Balance Transfer Report" />
     </group>
     <group android:checkableBehavior="single">

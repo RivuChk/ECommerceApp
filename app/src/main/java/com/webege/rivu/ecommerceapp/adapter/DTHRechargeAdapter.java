@@ -7,13 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.webege.rivu.ecommerceapp.DTHRechargeSubmit;
-import com.webege.rivu.ecommerceapp.MobileRechargeSubmit;
 import com.webege.rivu.ecommerceapp.R;
 import com.webege.rivu.ecommerceapp.item.DTHRechargeItem;
-import com.webege.rivu.ecommerceapp.item.MobileRechargeItem;
-
 import java.util.List;
 
 /**
@@ -52,13 +50,8 @@ public class DTHRechargeAdapter extends BaseAdapter {
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         view = mInflater.inflate(R.layout.item_mobilerechage, null);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DTHRechargeSubmit.class);
-                context.startActivity(intent);
-            }
-        });
+        TextView txt_provider_name = (TextView) view.findViewById(R.id.txt_provider_name);
+        txt_provider_name.setText(dthRechargeItems.get(position).getProviderName());
 
         return view;
     }

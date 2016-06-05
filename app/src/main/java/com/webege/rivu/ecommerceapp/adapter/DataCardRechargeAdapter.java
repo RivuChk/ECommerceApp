@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.webege.rivu.ecommerceapp.DTHRechargeSubmit;
 import com.webege.rivu.ecommerceapp.DataCardRechargeSubmit;
@@ -52,13 +53,8 @@ public class DataCardRechargeAdapter extends BaseAdapter {
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         view = mInflater.inflate(R.layout.item_mobilerechage, null);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DataCardRechargeSubmit.class);
-                context.startActivity(intent);
-            }
-        });
+        TextView txt_provider_name = (TextView) view.findViewById(R.id.txt_provider_name);
+        txt_provider_name.setText(dataCardRechargeItems.get(position).getProviderName());
 
         return view;
     }

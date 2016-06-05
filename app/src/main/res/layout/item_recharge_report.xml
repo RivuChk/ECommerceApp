@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_customer_mobile_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_date_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_operator_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_transID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_operator_transID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+    <com.webege.rivu.ecommerceapp.view.CustomFont
+        android:id="@+id/txt_closing_bal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"/>
+
+
+</LinearLayout>

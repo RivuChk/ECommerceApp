@@ -24,12 +24,42 @@
     <string name="input_enter_amount">Enter Amount</string>
     <string name="input_enter_confirm_amount">Confirm Amount</string>
 
-
+    <!--NAV ITEMS TITLE-->
     <string name="mobile_recharge_submit_details">Submit Details</string>
     <string name="mobile_recharge">Mobile Recharge</string>
     <string name="dth_recharge">DTH Recharge</string>
     <string name="data_card_recharge">Data Card Recharge</string>
     <string name="post_paid_recharge">Post Paid Recharge</string>
     <string name="landline_bill_recharge">LandLine Bill</string>
+    <string name="gas_bill_recharge">Gas Bill</string>
+    <string name="electricity_bill">Electricity Bill</string>
+    <string name="recharge_report">Recharge Report</string>
+    <string name="utility_report">Utility Report</string>
+    <string name="balance_transfer">Balance Transfer</string>
+    <string name="bal_trnsfr_report">Balance Transfer Report</string>
+    <string name="change_password">Change Password</string>
+    <string name="support">Support</string>
+
+
+    <!--HINT BILL Payment-->
+    <string name="bill_payment">Bill Payment</string>
+    <string name="customar_name">Customar Name</string>
+    <string name="customar_number">Customar Number</string>
+    <string name="amount">Amount</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="due_date">Due Date</string>
+    <string name="transact">Transact</string>
+
+    <!--Recharge Report-->
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+
+    <!--Balance Transfer-->
+    <string name="transfer">TRANSFER</string>
+
+    <!--Change Password-->
+    <string name="new_passwd">Type New Password</string>
+
+
 
 </resources>

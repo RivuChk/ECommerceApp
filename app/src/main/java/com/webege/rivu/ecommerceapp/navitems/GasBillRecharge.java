@@ -18,15 +18,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.webege.rivu.ecommerceapp.DTHRechargeSubmit;
-import com.webege.rivu.ecommerceapp.DataCardRechargeSubmit;
-import com.webege.rivu.ecommerceapp.PostPaidRechargeSubmit;
+import com.webege.rivu.ecommerceapp.GasBillRechargeSubmit;
 import com.webege.rivu.ecommerceapp.R;
 import com.webege.rivu.ecommerceapp.adapter.DTHRechargeAdapter;
-import com.webege.rivu.ecommerceapp.adapter.DataCardRechargeAdapter;
-import com.webege.rivu.ecommerceapp.adapter.PostPaidRechargeAdapter;
+import com.webege.rivu.ecommerceapp.adapter.GasBillRechargeAdapter;
 import com.webege.rivu.ecommerceapp.item.DTHRechargeItem;
-import com.webege.rivu.ecommerceapp.item.DataCardRechargeItem;
-import com.webege.rivu.ecommerceapp.item.PostPaidRechargeItem;
+import com.webege.rivu.ecommerceapp.item.GasBillRechargeItem;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,14 +45,15 @@ import javax.xml.parsers.ParserConfigurationException;
 /**
  * Created by Debraj on 5/29/2016.
  */
-public class PostPaidRecharge extends Fragment{
+public class GasBillRecharge extends Fragment{
 
-    List<PostPaidRechargeItem> postPaidRechargeItems;
-    PostPaidRechargeAdapter postPaidRechargeAdapter;
-    ListView list_post_paid_recharge;
-    public static PostPaidRecharge instance;
+    List<GasBillRechargeItem> gasBillRechargeItems;
+    GasBillRechargeAdapter gasBillRechargeAdapter;
+    ListView list_gas_bill_recharge;
+    public static GasBillRecharge instance;
     private Toolbar toolbar;
     HashMap<String,String> operators=new HashMap<>();
+
 
 
 
@@ -72,37 +70,34 @@ public class PostPaidRecharge extends Fragment{
         instance = this;
 
         toolbar = (Toolbar)getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.post_paid_recharge);
+        toolbar.setTitle(R.string.gas_bill_recharge);
         toolbar.setTitleTextColor(-1);
 
-        list_post_paid_recharge = (ListView)getActivity().findViewById(R.id.list_mobile_recharge);
-        postPaidRechargeItems = new ArrayList<PostPaidRechargeItem>();
+        list_gas_bill_recharge = (ListView)getActivity().findViewById(R.id.list_mobile_recharge);
+        gasBillRechargeItems = new ArrayList<GasBillRechargeItem>();
 
-
-        list_post_paid_recharge.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list_gas_bill_recharge.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), PostPaidRechargeSubmit.class);
+                Intent intent = new Intent(getActivity(), GasBillRechargeSubmit.class);
                 startActivity(intent);
             }
         });
 
         getOperators();
 
-
     }
 
     private void getOperators(){
         RequestQueue queue = Volley.newRequestQueue(getActivity());
-        String url ="http://www.mazicmoney.in/GetAllOperator?Type=4";
+        String url ="http://www.mazicmoney.in/GetAllOperator?Type=6";
 
-// Request a string response from the provided URL.
+        //Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("Response",response);
-
 
                         Document doc = null;
                         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -129,13 +124,11 @@ public class PostPaidRecharge extends Fragment{
                             String name = getValue(e, "SERVICEPROVIDER"); // name child value
                             String code = getValue(e, "OPERATORCODE"); // code child value
                             operators.put(name,code);
-                            postPaidRechargeItems.add(new PostPaidRechargeItem(name,code));
+                            gasBillRechargeItems.add(new GasBillRechargeItem(name,code));
                         }
 
-
-                        postPaidRechargeAdapter = new PostPaidRechargeAdapter(postPaidRechargeItems,getActivity());
-                        list_post_paid_recharge.setAdapter(postPaidRechargeAdapter);
-
+                        gasBillRechargeAdapter = new GasBillRechargeAdapter(gasBillRechargeItems,getActivity());
+                        list_gas_bill_recharge.setAdapter(gasBillRechargeAdapter);
 
                     }
                 }, new Response.ErrorListener() {
@@ -166,6 +159,7 @@ public class PostPaidRecharge extends Fragment{
         }
         return "";
     }
+
 
 
 }

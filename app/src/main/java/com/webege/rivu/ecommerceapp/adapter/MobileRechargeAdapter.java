@@ -54,7 +54,7 @@ public class MobileRechargeAdapter extends BaseAdapter {
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         view = mInflater.inflate(R.layout.item_mobilerechage, null);
 
-        TextView txt_store_name = (TextView) view.findViewById(R.id.txt_store_name);
+        TextView txt_store_name = (TextView) view.findViewById(R.id.txt_provider_name);
         txt_store_name.setText(mobileRechargeItems.get(position).getProviderName());
 
 

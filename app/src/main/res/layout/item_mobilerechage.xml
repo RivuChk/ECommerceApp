@@ -23,12 +23,12 @@
                 android:src="@mipmap/recharge"/>
 
             <com.webege.rivu.ecommerceapp.view.CustomFont
-                android:id="@+id/txt_store_name"
+                android:id="@+id/txt_provider_name"
                 android:layout_toRightOf="@+id/img_chat_user"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Store Name"
+                android:text="Provider Name"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:singleLine="true"

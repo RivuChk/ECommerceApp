@@ -35,6 +35,8 @@
         <activity android:name=".DataCardRechargeSubmit"></activity>
         <activity android:name=".PostPaidRechargeSubmit"></activity>
         <activity android:name=".LandlineBillRechargeSubmit"></activity>
+        <activity android:name=".GasBillRechargeSubmit"></activity>
+        <activity android:name=".ElectricityBillRechargeSubmit"></activity>
 
     </application>
 
